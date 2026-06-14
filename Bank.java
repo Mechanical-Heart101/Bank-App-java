@@ -21,6 +21,7 @@ public class Bank
     {
         Customer newCustomer = new Customer(name, customerID);
         customers.add(newCustomer);
+        System.out.println("Customer successfully added!");
     }
 
     /**
@@ -65,10 +66,19 @@ public class Bank
      * @param int balance
      * @param String owner
      */
-    public void addAccount(String accountNumber, int balance, String owner)
+    public void addAccount(String accountNumber, double balance, String customerID)
     {
+        Customer owner = findCustomer(customerID);
+
+        if (owner == null)
+        {
+            System.out.println("Customer not found!");
+            return;
+        }
+
         Account newAccount = new Account(accountNumber, balance, owner); // create a new account object
         accounts.add(newAccount); // add it to the accounts list
+        System.out.println("Account successfully created!");
     }
 
     /**
@@ -104,6 +114,17 @@ public class Bank
             }
         }
         return null;
+    }
+
+    /** 
+     * This is the toString method for the bank class
+     * @return String toString
+     */
+    @Override
+    public String toString()
+    {
+        return "Customers: " + customers.size() +
+        ", Accounts: " + accounts.size();
     }
 
 }

@@ -28,6 +28,15 @@ public class Customer // this is a short class representing the customer object.
         return customerID;
     }
 
+    /**
+     * This is the tostring method for the customer class
+     */
+    @Override
+    public String toString()
+    {
+        return "Name : " + getCustomerName() +
+            ", Customer ID: " + getCustomerID(); 
+    }
 
 
 }
